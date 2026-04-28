@@ -1,0 +1,6 @@
+ on: push
+ jobs:
+  whats going:
+     runs-on: ubuntu-latest
+         steps:
+       -run: echo "action.yml"
