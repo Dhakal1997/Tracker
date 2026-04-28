@@ -2,7 +2,7 @@ name: Fake news headlines generator
 
 on:
   schedule:
-    - cron: "*/2 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
     - name: Commit updates
       run: |
         git config --global user.name "github-actions"
-        git config --global user.email "nick@github.com"
+        git config --global user.email "actions@github.com"
         git add .
         git commit -m "Daily update" || echo "No changes to commit"
         git push
