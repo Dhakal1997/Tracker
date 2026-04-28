@@ -75,3 +75,4 @@ This full-stack web application empowers users to track their investments and ga
 - If you plan to allow public contributions, outline guidelines for code style, pull requests, and testing procedures.
 
 I hope this comprehensive README file provides a clear and informative guide for your full-stack website!
+/nhows there
