@@ -1,6 +1,42 @@
- on: push
- jobs:
-  whats going:
-     runs-on: ubuntu-latest
-     steps:
-       -run: echo "test.yml"
+name: Fake news headlines generator
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run-daily-script:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    
+    - name: Run analysis script
+      run: |
+        python analysis.py
+
+
+
+    - name: Commit updates
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "nick@github.com"
+        git add .
+        git commit -m "Daily update" || echo "No changes to commit"
+        git push
